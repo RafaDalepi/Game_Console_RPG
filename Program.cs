@@ -16,12 +16,9 @@ namespace _2
         {      
             int vida;
             
-                vida= 10;
-                if(vida>0){
-                    Console.WriteLine("Your HP is: "+ vida);
-                }else{
-                    Console.WriteLine("You died");
-                }
+                vida= 1;
+                Console.WriteLine("Your HP is: "+ vida);
+                
             for (int round = 1; vida > 0; round++)
             {
                 Console.WriteLine("------------------");
@@ -51,7 +48,9 @@ namespace _2
                                 Console.WriteLine("you have now "+ pot +" healing potions");
                         }else if(gn == 2){
                             Console.WriteLine("You walks "+ dist + " meters");
-                        }else if(enc==2){
+                        } 
+                    }
+                    if(enc==2){
                             Console.WriteLine("You found a skeleton");
                             vida--;      
                             Console.WriteLine("Your HP is "+ vida);          
@@ -60,12 +59,16 @@ namespace _2
                             vida --;
                             vida --;
                             Console.WriteLine("Your HP is "+ vida);
-                        }else{
-                        Console.WriteLine("Unexpected Comand");
                         }
-                    }
+                    }else{
+                        Console.WriteLine("Unexpected Comand");
                 }
             }
-        }   
-    }
+            if(vida == 0){
+                Console.WriteLine("Game over");
+                Console.ReadKey();
+            }
+        }
+    }   
 }
+
