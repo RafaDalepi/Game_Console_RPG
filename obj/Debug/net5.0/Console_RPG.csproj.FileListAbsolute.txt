@@ -1,0 +1,16 @@
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\bin\Debug\net5.0\Console_RPG.exe
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\bin\Debug\net5.0\Console_RPG.deps.json
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\bin\Debug\net5.0\Console_RPG.runtimeconfig.json
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\bin\Debug\net5.0\Console_RPG.runtimeconfig.dev.json
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\bin\Debug\net5.0\Console_RPG.dll
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\bin\Debug\net5.0\ref\Console_RPG.dll
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\bin\Debug\net5.0\Console_RPG.pdb
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\Console_RPG.csproj.AssemblyReference.cache
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\Console_RPG.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\Console_RPG.AssemblyInfoInputs.cache
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\Console_RPG.AssemblyInfo.cs
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\Console_RPG.csproj.CoreCompileInputs.cache
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\Console_RPG.dll
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\ref\Console_RPG.dll
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\Console_RPG.pdb
+C:\Users\rafad\OneDrive\Desktop\Programas\Console_RPG\obj\Debug\net5.0\Console_RPG.genruntimeconfig.cache
