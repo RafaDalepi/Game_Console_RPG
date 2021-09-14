@@ -54,7 +54,7 @@ namespace _2
                         Console.WriteLine("Your HP is "+ vida);          
                     }else if(enc==3){
                         Console.WriteLine("You found a goblin");
-                        vida - 2;
+                        vida --;
                         Console.WriteLine("Your HP is "+ vida);
                     }else if(_walk == "Drink pot"){
                         Console.WriteLine("You feel revigorated!");
