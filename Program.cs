@@ -16,13 +16,12 @@ namespace _2
         {      
             int vida;
             
-                vida= 1;
+                vida= 10;
                 Console.WriteLine("Your HP is: "+ vida);
                 
             for (int round = 1; vida > 0; round++)
             {
-                Console.WriteLine("------------------");
-                Console.WriteLine("Round: "+ round);
+                Console.WriteLine("------------\n Round: "+ round);
                 string _walk;
                 Console.WriteLine("Choose action: ");
                 _walk = Console.ReadLine();                       
@@ -37,32 +36,43 @@ namespace _2
                 int enc = numGen.Next(1, 3);
                 int dist = numGen.Next(10, 20);
                 int pot;
-                pot=0;
-                    
+                string action;
+                int gn = numGen.Next(1,2);
+                int atk =  numGen.Next(1,20);
+                
+                int gob;
+                
+                pot = 0 ;                
+                gob = 20;     
                     if(enc==1){                        
-                        int gn = numGen.Next(1,2);
-                            if(gn == 1){
-                                pot++;
-                                Console.WriteLine("you walks "+ dist + " meters");
-                                Console.WriteLine("You found a healing pot");
-                                Console.WriteLine("you have now "+ pot +" healing potions");
+                        if(gn == 1){
+                            pot++;
+                                Console.WriteLine(" You walk "+ dist + " meters \n You have now "+ pot +" healing potions \n You found a healing pot");
                         }else if(gn == 2){
                             Console.WriteLine("You walks "+ dist + " meters");
                         } 
                     }
                     if(enc==2){
-                            Console.WriteLine("You found a skeleton");
-                            vida--;      
-                            Console.WriteLine("Your HP is "+ vida);          
-                        }else if(enc==3){
-                            Console.WriteLine("You found a goblin");
-                            vida --;
-                            vida --;
-                            Console.WriteLine("Your HP is "+ vida);
+                        Console.WriteLine("you found a skeleton.\n What do you want to do?: ");
+                        action = Console.ReadLine();
+                        for (int esk = 30; esk > 0;)
+                        {
+                            if(action == "attack"){
+                                if(atk <=10 ){
+                                    Console.WriteLine("Your attack is weak \n Your attack causesd"+ atk + "of damage");
+                                    esk = esk - atk;
+                                }else if(atk >= 11){
+                                    Console.WriteLine("Your attack is strong \n Your attrack causes" +atk + "of damage");
+                                    esk = esk - atk; 
+                                }
+                            }
+
                         }
+                        
                     }else{
                         Console.WriteLine("Unexpected Comand");
                 }
+                                
             }
             if(vida == 0){
                 Console.WriteLine("Game over");
