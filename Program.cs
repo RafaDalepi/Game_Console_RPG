@@ -15,46 +15,39 @@ namespace _2
         static void Main(string[] args)  
     {      
             int vida;
-            
-                vida= 100;
-                Console.WriteLine("Your HP is: "+ vida);
-                
-            for (int round = 1; vida > 0; round++)
-        {
-                Console.WriteLine("------------\nRound: "+ round);
-                string _walk;
+            int pot;
+            Random numGen = new Random();
+            vida= 40;
+            pot = 0;
+            for (int round = 1; vida > 0; round++){
+                Console.WriteLine("------------\nRound: "+ round + "\nYour hp is: "+ vida);
+                string _walk;                
                 Console.WriteLine("Choose action: ");
-                _walk = Console.ReadLine();                       
-                if(_walk == "Heal"){
-                        Console.WriteLine("You feel revigorated!");
+                _walk = Console.ReadLine();                  
+                if(_walk == "heal"){
+                        if(pot > 0){
+                        Console.WriteLine("You feel revigorated!\nYour HP is: "+ vida);
                         vida = vida + 10;
-                        Console.WriteLine("Your HP is: "+ vida);
-                }
-                if(_walk == "walk"){            
-                Random numGen = new Random();
-               
-                int enc = numGen.Next(1, 3);
-                int dist = numGen.Next(10, 20);
-                int pot;
-                string action;
-                int gn = numGen.Next(1,2);
-                                                    
-                pot=0;
-                    
-                    if(enc == 1){                        
-                        if(gn == 1){
-                            pot++;
-                                Console.WriteLine("You have walked "+ dist + " meters \nYou have now "+ pot +" healing potions \nYou found a healing pot");
-                        }else if(gn == 2){
-                            Console.WriteLine("You have walked "+ dist + " meters");
-                        } 
+                    }else{
+                        Console.WriteLine("you have no healing potions left");
                     }
-                    if(enc == 2){
+                }else if(_walk == "walk"){
+                    int dist = numGen.Next(1, 100);                
+                    if(dist >= 30){
+                        pot++;
+                        Console.WriteLine("You have walked "+ dist + " meters\nYou found a healing pot\nYou have now "+ pot +" healing potions ");
+                    }else if(dist <= 29){
+                        Console.WriteLine("You have walked "+ dist + " meters");
+                    } 
+                }else if(_walk == "fight"){        
+                int enc = numGen.Next(1, 3);
+                string action;                
+                    Console.WriteLine("You looked aroud and found an skeleton in the distance");
                         for (int esk = 30; esk > 0;)
                         {
                         int atk =  numGen.Next(1, 20);
                         int eskAtk = numGen.Next(1, 30);
-                        Console.WriteLine("You found a skeleton.\nWhat do you want to do? ");
+                        Console.WriteLine("What do you want to do? ");
                         action = Console.ReadLine();                        
                         if(action == "attack"){
                                 if(atk <=10 ){
@@ -64,29 +57,29 @@ namespace _2
                                     Console.WriteLine("Your attack is strong \nYour attack causes " + atk + " of damage\nThe skeleton have now " + esk + " of hp");
                                     esk = esk - atk; 
                                 }
-                                if(eskAtk<= 30){
                                     vida = vida - eskAtk;
-                                    Console.WriteLine("The skeleton attaked you, causing "+ eskAtk + " of damage\nYour HP is now "+ vida + "\nThe skeleton have now " + esk + " of hp");                                
-                                }
+                                    Console.WriteLine("The skeleton attaked you, causing "+ eskAtk + " of damage\nYour HP is now "+ vida);                                
+                                
                             }else if(action == "heal"){
-                                if(pot > 0){
+                                if(pot < 1){
                                     Console.WriteLine("You have no healing potions left");
                                 }else{
                                     vida = vida + 10;
                                     pot--;
                                     Console.WriteLine("You used a heling potion");
                                 }
+                            }else{
+                                Console.WriteLine("Unexpected Comand");
                             }
-                        }
-                    }else{
-                Console.WriteLine("Unexpected Comand");
-            } 
-        }
-            if(vida == 0){
-                Console.WriteLine("Game over");
-                Console.ReadKey();
+                        }             
+                    }
+                    if(vida == 0){
+                        Console.WriteLine("Game over");
+                        Console.ReadKey();
                 }
-            }   
+            }
+            Console.ReadKey();
+            Console.Clear();   
         }
     }
 }
