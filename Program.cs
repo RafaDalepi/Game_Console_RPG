@@ -21,7 +21,7 @@ namespace _2
                 
             for (int round = 1; vida > 0; round++)
         {
-                Console.WriteLine("------------\n Round: "+ round);
+                Console.WriteLine("------------\nRound: "+ round);
                 string _walk;
                 Console.WriteLine("Choose action: ");
                 _walk = Console.ReadLine();                       
@@ -38,8 +38,8 @@ namespace _2
                 int pot;
                 string action;
                 int gn = numGen.Next(1,2);
-                                
-                pot = 0 ;                    
+                                                    
+                pot=0;
                     
                     if(enc == 1){                        
                         if(gn == 1){
@@ -54,7 +54,7 @@ namespace _2
                         {
                         int atk =  numGen.Next(1, 20);
                         int eskAtk = numGen.Next(1, 30);
-                        Console.WriteLine("You found a skeleton.\nWhat do you want to do?: ");
+                        Console.WriteLine("You found a skeleton.\nWhat do you want to do? ");
                         action = Console.ReadLine();                        
                         if(action == "attack"){
                                 if(atk <=10 ){
@@ -69,7 +69,7 @@ namespace _2
                                     Console.WriteLine("The skeleton attaked you, causing "+ eskAtk + " of damage\nYour HP is now "+ vida + "\nThe skeleton have now " + esk + " of hp");                                
                                 }
                             }else if(action == "heal"){
-                                if(pot == 0){
+                                if(pot > 0){
                                     Console.WriteLine("You have no healing potions left");
                                 }else{
                                     vida = vida + 10;
@@ -81,12 +81,11 @@ namespace _2
                     }else{
                 Console.WriteLine("Unexpected Comand");
             } 
-                    
         }
-        if(vida == 0){
-            Console.WriteLine("Game over");
-            Console.ReadKey();
-            }
+            if(vida == 0){
+                Console.WriteLine("Game over");
+                Console.ReadKey();
+                }
             }   
         }
     }
