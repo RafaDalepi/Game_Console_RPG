@@ -14,12 +14,12 @@ namespace _2
 {
         static void Main(string[] args)  
     {      
-            int vida;
-            int pot;
+            int vida, pot, round, bag;
             Random numGen = new Random();
-            vida= 40;
+            bag = 5;
+            vida= 1;
             pot = 0;
-            for (int round = 1; vida > 0; round++){
+            for (round = 1; vida > 0; round++){
                 Console.WriteLine("------------\nRound: "+ round + "\nYour hp is: "+ vida);
                 string _walk;                
                 Console.WriteLine("Choose action: ");
@@ -31,7 +31,7 @@ namespace _2
                     }else{
                         Console.WriteLine("you have no healing potions left");
                     }
-                }else if(_walk == "walk" ){
+                }else if(_walk == "walk"){
                     int dist = numGen.Next(1, 100);                
                     if(dist >= 60){
                         pot++;
@@ -39,7 +39,7 @@ namespace _2
                     }else if(dist <= 29){
                         Console.WriteLine("You have walked "+ dist + " meters");
                     } 
-                }else if(_walk == "fight" ){        
+                }else if(_walk == "fight" || vida > 0){        
                 int enc = numGen.Next(1, 3);
                 string action;                
                     Console.WriteLine("You looked aroud and found an skeleton in the distance");
@@ -69,14 +69,18 @@ namespace _2
                             }else{
                                 Console.WriteLine("Unexpected Comand");
                             }
+                            if(vida <= 0){
+                                break;
+                            }
                         }
                     }             
                 }
-                if(vida == 0){
-                    Console.WriteLine("Game over");
-            }
-            Console.ReadKey();
-            Console.Clear();   
+            if(vida <= 0){
+                Console.Clear();
+                Console.WriteLine("You survived until round "+ round);
+                Console.WriteLine("Game over");
+                Console.ReadKey();                     
+            }                          
         }
     }
 }
