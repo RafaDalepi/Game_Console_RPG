@@ -8,18 +8,19 @@ namespace _2
         public string stamina;
         public float experience;
         public int attack;
+        public int level;
     }
     
     class Program
 {
         static void Main(string[] args)  
     {      
-            int vida, pot, round, bag;
+            int vida, pot, round;
             Random numGen = new Random();
-            bag = 5;
             vida= 1;
-            pot = 0;
-            for (round = 1; vida > 0; round++){
+            pot= 0;
+            Bag();
+            for (round = 0; vida > 0; round++){
                 Console.WriteLine("------------\nRound: "+ round + "\nYour hp is: "+ vida);
                 string _walk;                
                 Console.WriteLine("Choose action: ");
@@ -36,9 +37,11 @@ namespace _2
                     if(dist >= 60){
                         pot++;
                         Console.WriteLine("You have walked "+ dist + " meters\nYou found a healing pot\nYou have now "+ pot +" healing potions ");
-                    }else if(dist <= 29){
+                        Bag();
+                    }else if(dist <= 59){
                         Console.WriteLine("You have walked "+ dist + " meters");
-                    } 
+                    }
+                     
                 }else if(_walk == "fight" || vida > 0){        
                 int enc = numGen.Next(1, 3);
                 string action;                
@@ -80,7 +83,17 @@ namespace _2
                 Console.WriteLine("You survived until round "+ round);
                 Console.WriteLine("Game over");
                 Console.ReadKey();                     
-            }                          
+            }                       
         }
+        static void Bag(){
+            int bag;
+            bag=0;
+            bag++;
+            if(bag <= 5){
+                bag ++;
+            }else{
+                Console.WriteLine("Your bag is full");
+            }
+        }            
     }
 }
