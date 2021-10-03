@@ -4,41 +4,30 @@ namespace _2
 {
     class knight
     {
-        public string name;
         public float exp, stamina;
-        public int attack, level, vida;
-    
-        public void xp(int a){
-            exp = 0;
-            if(a == 1){
-                exp =+ 0.5f;
-                if(exp == 10){
-                    level++;
-                }
-            }
-        }
+        public int attack, level, vida;   
+        
     }
     
     class Program
     {
             static void Main(string[] args)  
         { 
-            string player;        
+            string player, name;
+            int vida, pot, round, bag;
+            Console.WriteLine("Chose you name: ");
+            name = Console.ReadLine();        
             Console.WriteLine("Choose your class: ");
             player = Console.ReadLine();
             if(player == "knight" ){
                 Console.WriteLine("Knights have a bonus on health"); 
                 knight _player = new knight();
-                Console.WriteLine("Choose your name: ");
-                _player.name = Console.ReadLine();  
                 _player.attack = 10;
                 _player.level= 1; 
                 _player.stamina=5; 
                 _player.vida = 50;   
-                _player.exp=0;                      
-            }
-            
-            int vida, pot, round, bag;
+                _player.exp= 0;                      
+            }        
             Random numGen = new Random();
             vida= 10;
             pot= 0;
@@ -100,7 +89,7 @@ namespace _2
                             Console.WriteLine("Unexpected Comand");
                         }
                         if(esk < 1){
-                            
+                            xp();
                         }
                         if(vida <= 0){
                             break;
@@ -108,19 +97,29 @@ namespace _2
                     }
                 }             
             }
-        if(vida <= 0){
-            Console.Clear();
-            Console.WriteLine("You survived until round "+ round);
-            Console.WriteLine("Game over");
-            Console.ReadKey();                     
-        }                       
-    }
+            if(vida <= 0){
+                Console.Clear();
+                Console.WriteLine("You survived until round "+ round);
+                Console.WriteLine("Game over");
+                Console.ReadKey();                     
+            }                       
+        }   
         static int Bag(int bag){
             bag=0;             
             if(bag <= 5){
                 bag ++;
             }
             return bag;
+        }
+        public void xp(float exp, float level){
+            exp = 0;
+            level = 0;
+            if(a == 1){
+                exp =+ 0.5f;
+                if(exp == 10){
+                    level++;
+                }
+            }
         }            
     }
 }
