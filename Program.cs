@@ -5,21 +5,43 @@ namespace _2
     class knight
     {
         public string name;
-        public string stamina;
-        public float experience;
-        public int attack;
-        public int level;
+        public float exp, stamina;
+        public int attack, level, vida;
+    
+        public void xp(int a){
+            exp = 0;
+            if(a == 1){
+                exp =+ 0.5f;
+                if(exp == 10){
+                    level++;
+                }
+            }
+        }
     }
     
     class Program
-{
-        static void Main(string[] args)  
-    {      
-            int vida, pot, round;
+    {
+            static void Main(string[] args)  
+        { 
+            string player;        
+            Console.WriteLine("Choose your class: ");
+            player = Console.ReadLine();
+            if(player == "knight" ){
+                Console.WriteLine("Knights have a bonus on health"); 
+                knight _player = new knight();
+                Console.WriteLine("Choose your name: ");
+                _player.name = Console.ReadLine();  
+                _player.attack = 10;
+                _player.level= 1; 
+                _player.stamina=5; 
+                _player.vida = 50;   
+                _player.exp=0;                      
+            }
+            
+            int vida, pot, round, bag;
             Random numGen = new Random();
-            vida= 1;
+            vida= 10;
             pot= 0;
-            Bag();
             for (round = 0; vida > 0; round++){
                 Console.WriteLine("------------\nRound: "+ round + "\nYour hp is: "+ vida);
                 string _walk;                
@@ -27,21 +49,25 @@ namespace _2
                 _walk = Console.ReadLine();                  
                 if(_walk == "heal"){
                         if(pot > 0){
-                        Console.WriteLine("You feel revigorated!\nYour HP is: "+ vida);
                         vida = vida + 10;
+                        Console.WriteLine("You feel revigorated!\nYour HP is: "+ vida);                        
                     }else{
                         Console.WriteLine("you have no healing potions left");
                     }
                 }else if(_walk == "walk"){
-                    int dist = numGen.Next(1, 100);                
+                    int dist = numGen.Next(1, 100);                                   
                     if(dist >= 60){
-                        pot++;
-                        Console.WriteLine("You have walked "+ dist + " meters\nYou found a healing pot\nYou have now "+ pot +" healing potions ");
-                        Bag();
+                        bag = Bag(pot);
+                        if(bag>=5){
+                            pot++; 
+                            Console.WriteLine("You have walked "+ dist + " meters\nYou found a healing pot\nYou have now "+ pot +" healing potions ");
+                        }else{
+                            Console.WriteLine("You have walked "+ dist + " meters\nYou found a healing pot\nBut your bag is full\nyou have now "+pot+" healing potions left");
+                        }
                     }else if(dist <= 59){
                         Console.WriteLine("You have walked "+ dist + " meters");
                     }
-                     
+                //COMBATE   
                 }else if(_walk == "fight" || vida > 0){        
                 int enc = numGen.Next(1, 3);
                 string action;                
@@ -52,7 +78,7 @@ namespace _2
                         Console.WriteLine("What do you want to do? ");
                         action = Console.ReadLine();                        
                         if(action == "attack" || vida > 0 ){
-                                if(atk <=10 ){
+                                if(atk >= 10 ){
                                     Console.WriteLine("Your attack is weak \nYour attack causesd "+ atk + " of damage");
                                     esk = esk - atk;
                                 }else if(atk >= 11){
@@ -60,40 +86,42 @@ namespace _2
                                     esk = esk - atk; 
                                 }
                                 vida = vida - eskAtk;
-                                Console.WriteLine("The skeleton attaked you, causing "+ eskAtk + " of damage\nYour HP is now "+ vida);                                
-                            }else if(action == "heal"){
-                                if(pot < 1){
-                                    Console.WriteLine("You have no healing potions left");
-                                }else{
-                                    vida = vida + 10;
-                                    pot--;
-                                    Console.WriteLine("You used a heling potion");
-                                }
+                                Console.WriteLine("The skeleton attaked you, causing "+ eskAtk + " of damage\nYour HP is now "+ vida);                              
+                            }                             
+                        if(action == "heal"){
+                            if(pot < 1){
+                                Console.WriteLine("You have no healing potions left");
                             }else{
-                                Console.WriteLine("Unexpected Comand");
+                                vida = vida + 10;
+                                pot--;
+                                Console.WriteLine("You used a heling potion");
                             }
-                            if(vida <= 0){
-                                break;
-                            }
+                        }else{
+                            Console.WriteLine("Unexpected Comand");
                         }
-                    }             
-                }
-            if(vida <= 0){
-                Console.Clear();
-                Console.WriteLine("You survived until round "+ round);
-                Console.WriteLine("Game over");
-                Console.ReadKey();                     
-            }                       
-        }
-        static void Bag(){
-            int bag;
-            bag=0;
-            bag++;
+                        if(esk < 1){
+                            
+                        }
+                        if(vida <= 0){
+                            break;
+                        }
+                    }
+                }             
+            }
+        if(vida <= 0){
+            Console.Clear();
+            Console.WriteLine("You survived until round "+ round);
+            Console.WriteLine("Game over");
+            Console.ReadKey();                     
+        }                       
+    }
+        static int Bag(int bag){
+            bag=0;             
             if(bag <= 5){
                 bag ++;
-            }else{
-                Console.WriteLine("Your bag is full");
             }
+            return bag;
         }            
     }
 }
+
