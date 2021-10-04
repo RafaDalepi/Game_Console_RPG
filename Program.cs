@@ -14,7 +14,7 @@ namespace _2
             static void Main(string[] args)  
         { 
             string player, name;
-            int vida, pot, round, bag;
+            int vida, pot, round, bag, kill;
             Console.WriteLine("Chose you name: ");
             name = Console.ReadLine();        
             Console.WriteLine("Choose your class: ");
@@ -31,6 +31,7 @@ namespace _2
             Random numGen = new Random();
             vida= 10;
             pot= 0;
+            kill= 0;
             for (round = 0; vida > 0; round++){
                 Console.WriteLine("------------\nRound: "+ round + "\nYour hp is: "+ vida);
                 string _walk;                
@@ -89,7 +90,9 @@ namespace _2
                             Console.WriteLine("Unexpected Comand");
                         }
                         if(esk < 1){
-                            xp();
+                            int level;
+                            kill++;
+                            kill = xp();
                         }
                         if(vida <= 0){
                             break;
@@ -99,7 +102,8 @@ namespace _2
             }
             if(vida <= 0){
                 Console.Clear();
-                Console.WriteLine("You survived until round "+ round);
+                Console.WriteLine("You survived until round "+ round + "\nYou killed "+ kill + " enemies");
+
                 Console.WriteLine("Game over");
                 Console.ReadKey();                     
             }                       
@@ -111,14 +115,14 @@ namespace _2
             }
             return bag;
         }
-        public void xp(float exp, float level){
+        public void xp(int a, float exp, float level){
             exp = 0;
             level = 0;
             if(a == 1){
                 exp =+ 0.5f;
-                if(exp == 10){
-                    level++;
-                }
+            }
+            if(exp == 10){
+                level++;
             }
         }            
     }
